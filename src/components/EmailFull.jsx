@@ -5,10 +5,8 @@ const EmailFull = ({ email }) => {
 
   return (
     <div>
-      { Object.keys(email).length !== 0 ? 
-        (<p>{subject}</p>)
-      :
-       (<h1>No email selected</h1>)}
+      <p>{subject}</p>
+      <p>{message}</p>
     </div>
   );
 }

@@ -5,16 +5,17 @@
 }
 
 .leftList {
-  background-color: lightgray;
+  background-color: #797979;
   margin: 1vh;
-  height: 100vh;
-  width: 80vh;
+  height: 98vh; /* 98 so that the 1vh margins dont make it scroll */
+  width: 60vh;
+  overflow-y: scroll;
 }
 
 .rightList {
   display: flex;
   background-color: white;
-  height: 100vh;
+  height: 98vh; /* 98 so that the 1vh margins dont make it scroll */
   width: 100%;
   margin: 1vh;
   align-items: center;

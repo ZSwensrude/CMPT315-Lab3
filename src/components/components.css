@@ -4,8 +4,28 @@
   font-weight: bold;
 }
 
+.emailPreview :hover {
+  background-color: #ece3fb;
+  cursor: pointer;
+}
+
 .emailPreview {
-  background-color: white;
+  background-color: #ffe1f0;
   font-size: large;
-  margin: 2vh 5vh 2vh 5vh;
+  margin: 1vh;
+}
+
+#read {
+  background-color: #e6e6e6;
+}
+
+#selected {
+  background-color: #ffb5da;
+}
+
+.details {
+  font-size: medium;
+  font-weight: normal;
+  color: #474747;
+  margin: 0px;
 }

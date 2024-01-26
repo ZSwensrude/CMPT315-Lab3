@@ -1,13 +1,30 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
-const EmailPreview = ({ email }) => {
-  const { address, from, id, message, read, subject, tag, time } = email;
+const EmailPreview = ({ email, selected, handleClick }) => {
+  const { address, from, read, subject, time } = email;
+  const [emailId, setEmailId] = useState('');
 
-  console.log(email);
+  useEffect( () => {
+    console.log("selected from preview", selected);
+    if (selected === email.id){
+      setEmailId('selected');
+    } else {
+      setEmailId(read === "true" ? 'read' : 'unread');
+    }
+  }, [selected])
 
   return (
-    <div className="emailPreview">
-      <p>{subject}</p>
+    <div 
+      id={`${emailId}`} 
+      className='emailPreview'
+      onClick={ () => handleClick(email)}
+    >
+      <div>
+        <p>{subject}</p>
+        <p className="details">From {from}</p>
+        <p className="details">({address})</p>
+        <p className="details">at {time}</p>
+      </div>
     </div>
   );
 };
