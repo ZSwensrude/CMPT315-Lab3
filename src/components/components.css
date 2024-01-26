@@ -1,0 +1,11 @@
+
+.emailList {
+  color: black;
+  font-weight: bold;
+}
+
+.emailPreview {
+  background-color: white;
+  font-size: large;
+  margin: 2vh 5vh 2vh 5vh;
+}
