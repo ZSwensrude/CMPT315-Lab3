@@ -19,18 +19,16 @@ function App() {
         "Content-Type": "application/json;charset=UTF-8",
       },
     }).then(({data}) => { 
-      //console.log(data);
       setEmails(data);
     });
   }, [])
 
   const handleClick = (email) => {
-    console.log("email: ", email, " clicked");
     setSelectedEmail(email);
   };
 
   useEffect( () => {
-    console.log("selectedEmail.id", selectedEmail.id);
+    if (Object.keys(selectedEmail).length !== 0 ) selectedEmail.read = 'true';
   }, [selectedEmail])
 
 

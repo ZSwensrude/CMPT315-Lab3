@@ -5,7 +5,7 @@ const EmailFull = ({ email }) => {
 
   return (
     <div>
-      <p>{subject}</p>
+      <h1>{subject}</h1>
       <p>{message}</p>
     </div>
   );

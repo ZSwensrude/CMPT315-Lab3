@@ -5,7 +5,6 @@ const EmailPreview = ({ email, selected, handleClick }) => {
   const [emailId, setEmailId] = useState('');
 
   useEffect( () => {
-    console.log("selected from preview", selected);
     if (selected === email.id){
       setEmailId('selected');
     } else {
