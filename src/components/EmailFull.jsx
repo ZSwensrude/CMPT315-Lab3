@@ -1,12 +1,15 @@
 import React from "react";
+import './components.css'
 
 const EmailFull = ({ email }) => {
-  const { address, from, id, message, read, subject, tag, time } = email;
+  const { address, from, message, subject, time } = email;
 
   return (
-    <div>
-      <h1>{subject}</h1>
+    <div className="emailContainer">
+      <h1 className="header">{subject}</h1>
+      <p>From {from} ------ {address}</p>
       <p>{message}</p>
+      <p className="time">{time}</p>
     </div>
   );
 }

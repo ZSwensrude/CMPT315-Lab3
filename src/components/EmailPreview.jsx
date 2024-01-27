@@ -10,7 +10,7 @@ const EmailPreview = ({ email, selected, handleClick }) => {
     } else {
       setEmailId(read === "true" ? 'read' : 'unread');
     }
-  }, [selected])
+  }, [selected, read, email])
 
   return (
     <div 

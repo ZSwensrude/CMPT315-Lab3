@@ -5,7 +5,7 @@
 }
 
 .leftList {
-  background-color: #797979;
+  background-color: gray;
   margin: 1vh;
   height: 98vh; /* 98 so that the 1vh margins dont make it scroll */
   width: 60vh;

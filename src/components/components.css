@@ -12,7 +12,7 @@
 .emailPreview {
   background-color: #ffe1f0;
   font-size: large;
-  margin: 1vh;
+  margin: 2vh;
 }
 
 #read {
@@ -29,3 +29,18 @@
   color: #474747;
   margin: 0px;
 }
+
+.emailContainer {
+  width: 100vh;
+  height: 70vh;
+  padding: 2vh;
+  outline: auto;
+  outline-color: #474747;
+  background-color: #ffe1f0;
+}
+
+.time {
+  position: relative;
+  top: 50vh;
+}
+
