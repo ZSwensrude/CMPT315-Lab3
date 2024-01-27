@@ -3,9 +3,12 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import EmailList from './components/EmailList';
 import EmailFull from './components/EmailFull';
+import SearchBar from './components/SearchBar';
 
 function App() {
   const [emails, setEmails] = useState([]);
+  const [filteredEmails, setFilteredEmails] = useState([])
+  const [searchInput, setSearchInput] = useState('')
   const [selectedEmail, setSelectedEmail] = useState({});
 
   // get emails on load
@@ -23,6 +26,22 @@ function App() {
     });
   }, [])
 
+  useEffect(() => {
+    let filtered = [];
+    if (searchInput === "") {
+      filtered = emails
+    } else {
+      filtered = emails.filter(emails =>
+      emails.subject.toLowerCase().includes(searchInput.toLowerCase())
+      );
+    }
+    setFilteredEmails(filtered);
+  }, [emails, searchInput]);
+
+  const handleInput = e => {
+    setSearchInput(e.target.value);
+  };
+
   const handleClick = (email) => {
     setSelectedEmail(email);
   };
@@ -36,7 +55,9 @@ function App() {
     <div className="App">
     
       <div className='leftList'>
-        <EmailList emails={emails} selected={selectedEmail.id} handleClick={handleClick}/>
+        <h1>Inbox</h1>
+        <SearchBar placeholder={"subject"} handleInput={handleInput} />
+        <EmailList emails={filteredEmails} selected={selectedEmail.id} handleClick={handleClick}/>
       </div>
 
       <div className='rightList'>
