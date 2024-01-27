@@ -4,11 +4,13 @@ const EmailPreview = ({ email, selected, handleClick }) => {
   const { address, from, read, subject, time } = email;
   const [emailId, setEmailId] = useState('');
 
+  // when selected, read, or email is changed, make sure id
+  // is set correctly (handles background colour)
   useEffect( () => {
     if (selected === email.id){
-      setEmailId('selected');
+      setEmailId('selectedEmail');
     } else {
-      setEmailId(read === "true" ? 'read' : 'unread');
+      setEmailId(read === "true" ? 'readEmail' : 'unreadEmail');
     }
   }, [selected, read, email])
 
@@ -20,9 +22,9 @@ const EmailPreview = ({ email, selected, handleClick }) => {
     >
       <div>
         <p>{subject}</p>
-        <p className="details">From {from}</p>
-        <p className="details">({address})</p>
-        <p className="details">at {time}</p>
+        <p className="emailDetails">From {from}</p>
+        <p className="emailDetails">({address})</p>
+        <p className="emailDetails">at {time}</p>
       </div>
     </div>
   );

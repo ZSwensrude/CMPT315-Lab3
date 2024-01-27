@@ -1,4 +1,6 @@
-
+/* I only used one css file for all my components to keep importing simple,
+   as well as to keep the number of files down, as one for each component
+   seems a bit overkill when theres only one or two rules in each */
 .emailList {
   color: white;
   font-weight: bold;
@@ -15,15 +17,15 @@
   margin: 2vh;
 }
 
-#read {
+#readEmail {
   background-color: #737373;
 }
 
-#selected {
+#selectedEmail {
   background-color: #E118A2;
 }
 
-.details {
+.emailDetails {
   font-size: medium;
   font-weight: normal;
   color: #f3f3f3;

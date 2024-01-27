@@ -26,6 +26,7 @@ function App() {
     });
   }, [])
 
+  // used for search (same as monsters demo)
   useEffect(() => {
     let filtered = [];
     if (searchInput === "") {
@@ -38,14 +39,17 @@ function App() {
     setFilteredEmails(filtered);
   }, [emails, searchInput]);
 
+  // used for search bar (same as monsters demo)
   const handleInput = e => {
     setSearchInput(e.target.value);
   };
 
+  // handles email click, sets selection
   const handleClick = (email) => {
     setSelectedEmail(email);
   };
 
+  // when email is selected, set 'read' to true
   useEffect( () => {
     if (Object.keys(selectedEmail).length !== 0 ) selectedEmail.read = 'true';
   }, [selectedEmail])

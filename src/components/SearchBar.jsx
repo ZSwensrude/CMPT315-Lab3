@@ -1,6 +1,7 @@
 import React from "react";
 import "./components.css";
 
+// same as monsters demo
 const SearchBar = ({ placeholder, handleInput }) => (
   <input
     className="search"
