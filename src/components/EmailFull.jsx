@@ -7,9 +7,9 @@ const EmailFull = ({ email }) => {
   return (
     <div className="emailContainer">
       <h1 className="header">{subject}</h1>
+      <p>{time}</p>
       <p>From {from} ------ {address}</p>
       <p>{message}</p>
-      <p className="time">{time}</p>
     </div>
   );
 }

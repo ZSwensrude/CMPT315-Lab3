@@ -5,7 +5,7 @@
 }
 
 .leftList {
-  background-color: gray;
+  background-color: #020428;
   margin: 1vh;
   height: 98vh; /* 98 so that the 1vh margins dont make it scroll */
   width: 60vh;
@@ -14,11 +14,12 @@
 
 .rightList {
   display: flex;
-  background-color: white;
+  background-color: #020428;
   height: 98vh; /* 98 so that the 1vh margins dont make it scroll */
   width: 100%;
   margin: 1vh;
   align-items: center;
   justify-content: center;
+  color: white;
 }
 

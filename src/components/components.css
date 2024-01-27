@@ -1,32 +1,32 @@
 
 .emailList {
-  color: black;
+  color: white;
   font-weight: bold;
 }
 
 .emailPreview :hover {
-  background-color: #ece3fb;
+  background-color: #ed3ab4;
   cursor: pointer;
 }
 
 .emailPreview {
-  background-color: #ffe1f0;
+  background-color: #720e9d;
   font-size: large;
   margin: 2vh;
 }
 
 #read {
-  background-color: #e6e6e6;
+  background-color: #737373;
 }
 
 #selected {
-  background-color: #ffb5da;
+  background-color: #E118A2;
 }
 
 .details {
   font-size: medium;
   font-weight: normal;
-  color: #474747;
+  color: #f7f7f7;
   margin: 0px;
 }
 
@@ -36,11 +36,6 @@
   padding: 2vh;
   outline: auto;
   outline-color: #474747;
-  background-color: #ffe1f0;
-}
-
-.time {
-  position: relative;
-  top: 50vh;
+  background-color: #E118A2;
 }
 
