@@ -9,6 +9,7 @@ import Folders from './components/Folders';
 function App() {
   const [emails, setEmails] = useState([]);
   const [deletedEmails, setDeletedEmails] = useState([]);
+  const [viewDeleted, setViewDeleted] = useState(false);
   const [filteredEmails, setFilteredEmails] = useState([])
   const [searchInput, setSearchInput] = useState('')
   const [selectedEmail, setSelectedEmail] = useState({});
@@ -74,17 +75,27 @@ function App() {
     setEmails(emails.filter(email => email.id !== emailId));
   };
 
+  const inboxButton = () => {
+    // when clicking the inbox button, we dont want to view any deleted emails
+    setViewDeleted(false);
+  };
+
+  const deleteButton = () => {
+    // when clicking the inbox button, we dont want to view any deleted emails
+    setViewDeleted(true);
+  };
+
   return (
     <div className="App">
     
       <div className='leftList'>
-        <Folders />
+        <Folders inboxButton={inboxButton} deleteButton={deleteButton} />
       </div>
 
       <div className='middleList'>
         <h1>Inbox</h1>
         <SearchBar placeholder={"subject"} handleInput={handleInput} />
-        <EmailList emails={filteredEmails} selected={selectedEmail.id} handleClick={handleClick}/>
+        <EmailList emails={filteredEmails} deletedEmails={deletedEmails} viewDeleted={viewDeleted} selected={selectedEmail.id} handleClick={handleClick}/>
       </div>
 
       <div className='rightList'>
