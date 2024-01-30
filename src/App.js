@@ -9,6 +9,7 @@ import Folders from './components/Folders';
 function App() {
   const [emails, setEmails] = useState([]);
   const [deletedEmails, setDeletedEmails] = useState([]);
+  const [filteredDeletedEmails, setFilteredDeletedEmails] = useState([]);
   const [viewDeleted, setViewDeleted] = useState(false);
   const [filteredEmails, setFilteredEmails] = useState([])
   const [searchInput, setSearchInput] = useState('')
@@ -36,15 +37,21 @@ function App() {
   // used for search (same as monsters demo)
   useEffect(() => {
     let filtered = [];
+    let filteredDeleted = [];
     if (searchInput === "") {
-      filtered = emails
+      filtered = emails;
+      filteredDeleted = deletedEmails;
     } else {
       filtered = emails.filter(emails =>
-      emails.subject.toLowerCase().includes(searchInput.toLowerCase())
+        emails.subject.toLowerCase().includes(searchInput.toLowerCase())
+      );
+      filteredDeleted = deletedEmails.filter(emails =>
+        emails.subject.toLowerCase().includes(searchInput.toLowerCase())
       );
     }
     setFilteredEmails(filtered);
-  }, [emails, searchInput]);
+    setFilteredDeletedEmails(filteredDeleted);
+  }, [emails, searchInput, deletedEmails]);
 
   // used for search bar (same as monsters demo)
   const handleInput = e => {
@@ -95,7 +102,7 @@ function App() {
       <div className='middleList'>
         <h1>Inbox</h1>
         <SearchBar placeholder={"subject"} handleInput={handleInput} />
-        <EmailList emails={filteredEmails} deletedEmails={deletedEmails} viewDeleted={viewDeleted} selected={selectedEmail.id} handleClick={handleClick}/>
+        <EmailList emails={filteredEmails} deletedEmails={filteredDeletedEmails} viewDeleted={viewDeleted} selected={selectedEmail.id} handleClick={handleClick}/>
       </div>
 
       <div className='rightList'>
