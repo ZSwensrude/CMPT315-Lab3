@@ -4,9 +4,11 @@ import axios from 'axios';
 import EmailList from './components/EmailList';
 import EmailFull from './components/EmailFull';
 import SearchBar from './components/SearchBar';
+import Folders from './components/Folders';
 
 function App() {
   const [emails, setEmails] = useState([]);
+  const [deletedEmails, setDeletedEmails] = useState([]);
   const [filteredEmails, setFilteredEmails] = useState([])
   const [searchInput, setSearchInput] = useState('')
   const [selectedEmail, setSelectedEmail] = useState({});
@@ -21,7 +23,11 @@ function App() {
         Accept: "application/json",
         "Content-Type": "application/json;charset=UTF-8",
       },
-    }).then(({data}) => { 
+    }).then(({data}) => {
+      // add the deleted field to all the emails
+      data = data.map( email => {
+        return {...email, deleted: false};
+      }) 
       setEmails(data);
     });
   }, [])
@@ -54,11 +60,28 @@ function App() {
     if (Object.keys(selectedEmail).length !== 0 ) selectedEmail.read = 'true';
   }, [selectedEmail])
 
+  const handleDelete = (emailId) => {
+    // find the email we are looking for
+    emails.map( email => {
+      if (email.id === emailId){
+        email.deleted = true;
+        // add email to deleted list
+        setDeletedEmails([...deletedEmails, email]);
+      }
+      return email;
+    })
+    // remove email from email list
+    setEmails(emails.filter(email => email.id !== emailId));
+  };
 
   return (
     <div className="App">
     
       <div className='leftList'>
+        <Folders />
+      </div>
+
+      <div className='middleList'>
         <h1>Inbox</h1>
         <SearchBar placeholder={"subject"} handleInput={handleInput} />
         <EmailList emails={filteredEmails} selected={selectedEmail.id} handleClick={handleClick}/>
@@ -67,7 +90,7 @@ function App() {
       <div className='rightList'>
         { // if we were given an email, set it as current, otherwise show no email message 
           Object.keys(selectedEmail).length !== 0 ? (
-            <EmailFull email={selectedEmail} />
+            <EmailFull email={selectedEmail} handleDelete={handleDelete}/>
           ) : (
             <h1>No email selected</h1>
           )
